@@ -18,6 +18,9 @@ export default new Vuex.Store({
     },
     postOrder(state, data) {
       state.orderInfo = data
+    },
+    addToCart(state, id) {
+      state.cart.push(state.menuItems.filter(item => item.id == id))
     }
   },
   actions: {
@@ -32,5 +35,6 @@ export default new Vuex.Store({
       return true
     }
   },
-  modules: {}
+  modules: {},
+  getters: {}
 })
