@@ -20,7 +20,7 @@ export default new Vuex.Store({
       state.orderInfo = data
     },
     addToCart(state, id) {
-      state.cart.push(state.menuItems.filter(item => item.id == id))
+      state.cart.push(state.menuItems.find(item => item.id == id))
     }
   },
   actions: {
