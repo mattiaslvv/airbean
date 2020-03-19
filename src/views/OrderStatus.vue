@@ -14,7 +14,6 @@ export default {
   name: "orderStatus",
   computed: {
     orderInfo() {
-      console.log(this.$store.state.orderInfo)
       return this.$store.state.orderInfo
     }
   }

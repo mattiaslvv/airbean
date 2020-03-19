@@ -12,7 +12,6 @@ export async function getItems() {
 
 export async function postItems() {
   const response = await api.post()
-  console.log(response)
   const data = response.data
   return data
 }
