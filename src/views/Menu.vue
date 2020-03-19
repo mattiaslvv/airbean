@@ -1,16 +1,23 @@
 <template>
   <section>
     <ul>
-      <li v-for="item in menuItems" v-bind:key="item.id" @click="addToCart(item.id)">{{item}}</li>
+      <li v-for="item in menuItems" v-bind:key="item.id" @click="addToCart(item.id)"><MenuItem v-bind:item ="item"/></li>
     </ul>
     <h1>Cart</h1>
-    <ul>
-      <li v-for="item in cartItems" v-bind:key="item.id">{{item}}</li>
-    </ul>
+    
+     <Cart v-bind:items="cartItems"/>
+
   </section>
 </template>
 <script>
-export default {    
+
+import MenuItem from "../components/MenuItem"
+import Cart from "../components/Cart"
+export default { 
+  components:{
+    MenuItem,
+    Cart
+  } ,  
   computed: {
       menuItems() {
       return this.$store.state.menuItems

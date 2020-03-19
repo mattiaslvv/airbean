@@ -1,10 +1,6 @@
 <template>
   <div class="home">
-<<<<<<< HEAD
-    <img alt="Vue logo" src="../assets/logo.png" />
-=======
     <img src="./../assets/graphics/airbean-landing.svg" alt="logoshit">
->>>>>>> lukas
   </div>
 </template>
 

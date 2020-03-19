@@ -33,7 +33,7 @@ background-color: $pink;
     max-width:500px;
     margin: 0 auto;
 
-    div{
+    > div{
         padding: 8rem 1,4rem;
         box-sizing: border-box;
         background-image: url('./../assets/graphics/graphics-header.svg'), url('./../assets/graphics/graphics-footer.svg');
