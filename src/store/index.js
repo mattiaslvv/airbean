@@ -8,7 +8,7 @@ export default new Vuex.Store({
   state: {
     cart: [],
     cartItem: {},
-    totalprice: 0,
+    totalPrice: 0,
     menuItems: [],
     orderInfo: {}
   },
@@ -36,5 +36,11 @@ export default new Vuex.Store({
     }
   },
   modules: {},
-  getters: {}
+  getters: {
+    totalPrice(state) {
+      let result = 0;
+      state.cart.forEach(item => result += item.price)
+      return result
+    }
+  }
 })

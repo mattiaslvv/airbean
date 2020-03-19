@@ -11,6 +11,7 @@
 
 <script>
 import CartItem from "./CartItem"
+import { mapGetters } from 'vuex'
 export default {
     components:{
         CartItem,
@@ -19,11 +20,7 @@ export default {
         items:Array
     },
     computed:{
-        totalPrice(){
-            let result = 0;
-            this.items.forEach(item =>result += item.price)
-            return result
-        },
+        ...mapGetters(['totalPrice']),
         cartItems() {
             // bara visa varje item en gång
             return [...new Set(this.items)];
