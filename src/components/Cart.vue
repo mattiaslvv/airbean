@@ -1,11 +1,11 @@
 <template>
   <div>
-      <h1>Din beställning</h1>
-      <CartItem v-for="item in cartItems" :key="item.id" v-bind:item="item" :countItem="count(item)"/>
-      <h2>Total</h2>
-      <span>{{totalPrice}}</span>
-      <span>inkl moms + drönarleverans</span>
-      <button>Take my money!</button>
+    <h1>Din beställning</h1>
+    <CartItem v-for="item in cartItems" :key="item.id" v-bind:item="item" :countItem="count(item)" />
+    <h2>Total</h2>
+    <span>{{totalPrice}}</span>
+    <span>inkl moms + drönarleverans</span>
+    <button @click="postItems">Take my money!</button>
   </div>
 </template>
 
@@ -16,20 +16,24 @@ export default {
     components:{
         CartItem,
     },
-    props:{
-        items:Array
-    },
     computed:{
         ...mapGetters(['totalPrice']),
+        items() {
+            return this.$store.state.cart
+        },
         cartItems() {
             // bara visa varje item en gång
             return [...new Set(this.items)];
         }
-
     },
     methods:{
         count(item){
            return this.items.filter(item2 =>item2.id === item.id).length
+        },
+        //TODO: add loading spinner while awaiting response from API call
+        async postItems(){
+            await this.$store.dispatch('postOrderItems')
+            this.$router.push('/orderstatus')
         }
     }
 
@@ -37,5 +41,4 @@ export default {
 </script>
 
 <style>
-
 </style>
