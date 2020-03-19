@@ -35,12 +35,11 @@ export default new Vuex.Store({
       return true
     }
   },
-  modules: {},
   getters: {
     totalPrice(state) {
-      let result = 0;
-      state.cart.forEach(item => result += item.price)
-      return result
+      state.totalPrice = 0
+      state.cart.forEach(item => state.totalPrice += item.price)
+      return state.totalPrice
     }
   }
 })
