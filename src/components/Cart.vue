@@ -22,8 +22,10 @@ export default {
             return this.$store.state.cart
         },
         cartItems() {
-            // bara visa varje item en gång
-            return [...new Set(this.items)];
+            // bara använda varje id en gång
+            let idMap = [...new Set(this.items.map(item => item.id))]
+            // hitta item för alla id
+            return idMap.map(id => this.items.find(item => item.id == id))
         }
     },
     methods:{

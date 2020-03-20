@@ -23,7 +23,8 @@ export default new Vuex.Store({
       state.cart.push(state.menuItems.find(item => item.id == id))
     },
     removeFromCart(state, id) {
-      let index = state.cart.find(item => item.id == id)
+      let cartItem = state.cart.find(item => item.id == id)
+      let index = state.cart.indexOf(cartItem)
       state.cart.splice(index, 1)
     }
   },
