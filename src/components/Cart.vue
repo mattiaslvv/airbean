@@ -1,10 +1,13 @@
 <template>
   <div>
     <h1>Din beställning</h1>
-    <CartItem v-for="item in cartItems" :key="item.id" v-bind:item="item" :countItem="count(item)" />
-    <h2>Total</h2>
-    <span>{{totalPrice}}</span>
-    <span>inkl moms + drönarleverans</span>
+    <img v-if="loading" src="../assets/graphics/loader.png">
+    <div v-else>
+        <CartItem v-for="item in cartItems" :key="item.id" v-bind:item="item" :countItem="count(item)" />
+        <h2>Total</h2>
+        <span>{{totalPrice}}</span>
+        <span>inkl moms + drönarleverans</span>
+    </div>
     <button @click="postItems">Take my money!</button>
   </div>
 </template>
@@ -16,6 +19,9 @@ export default {
     components:{
         CartItem,
     },
+     data(){ return {    
+    loading: false,
+  }},
     computed:{
         ...mapGetters(['totalPrice']),
         items() {
@@ -35,8 +41,10 @@ export default {
         //TODO: add loading spinner while awaiting response from API call
         //TODO: lös duplicated keys error om man går till orderstatus, sen tillbaka till menu och beställer mer
         async postItems(){
+            this.loading = true
             await this.$store.dispatch('postOrderItems')
             this.$router.push('/orderstatus')
+            this.loading = false
         }
     }
 
