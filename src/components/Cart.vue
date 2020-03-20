@@ -31,6 +31,7 @@ export default {
            return this.items.filter(item2 =>item2.id === item.id).length
         },
         //TODO: add loading spinner while awaiting response from API call
+        //TODO: lös duplicated keys error om man går till orderstatus, sen tillbaka till menu och beställer mer
         async postItems(){
             await this.$store.dispatch('postOrderItems')
             this.$router.push('/orderstatus')
