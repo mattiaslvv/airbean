@@ -32,7 +32,7 @@ export default {
     },
     methods: {
       addToCart(id) {
-        this.$store.commit('addToCart', id)
+        this.$store.dispatch('addThisToCart', id)
       }
     }
 }

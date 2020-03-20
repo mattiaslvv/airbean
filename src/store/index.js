@@ -21,6 +21,10 @@ export default new Vuex.Store({
     },
     addToCart(state, id) {
       state.cart.push(state.menuItems.find(item => item.id == id))
+    },
+    removeFromCart(state, id) {
+      let index = state.cart.find(item => item.id == id)
+      state.cart.splice(index, 1)
     }
   },
   actions: {
@@ -33,6 +37,12 @@ export default new Vuex.Store({
       const data = await API.postItems()
       context.commit('postOrder', data)
       return true
+    },
+    addThisToCart(context, id) {
+      context.commit('addToCart', id)
+    },
+    removeThisFromCart(context, id) {
+      context.commit('removeFromCart', id)
     }
   },
   getters: {
