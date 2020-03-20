@@ -1,7 +1,13 @@
 <template>
   <div>
     <h1>Din beställning</h1>
-    <CartItem v-for="item in cartItems" :key="item.id" v-bind:item="item" :countItem="count(item)" />
+    <CartItem
+      v-for="item in cartItems"
+      :key="item.id"
+      v-bind:item="item"
+      :countItem="count(item)"
+      @click.native="removeFromCart(item.id)"
+    />
     <h2>Total</h2>
     <span>{{totalPrice}}</span>
     <span>inkl moms + drönarleverans</span>
@@ -34,6 +40,9 @@ export default {
         async postItems(){
             await this.$store.dispatch('postOrderItems')
             this.$router.push('/orderstatus')
+        },
+        removeFromCart(id) {
+            this.$store.dispatch('removeThisFromCart', id)
         }
     }
 
