@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav>
+    <nav v-if="this.$router.currentRoute.path != '/'">
       <hamburger-icon />
     </nav>
     <router-view />
