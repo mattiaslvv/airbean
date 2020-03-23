@@ -1,14 +1,14 @@
 <template>
   <div id="wrapper" v-if="showMenu">
-          <nav class="burgerWrapper">
-        <img @click="closeMenu" src="@/assets/graphics/close.svg" alt="Close" />
-        </nav>
+    <nav class="burgerWrapper">
+      <img @click="closeMenu" src="@/assets/graphics/close.svg" alt="Close" />
+    </nav>
     <section id="nav">
-      <router-link class="router" to="/Menu" tag="h1">Meny</router-link>
+      <h1 class="router" @click="goTo('/Menu')">Meny</h1>
       <br />
-      <router-link class="router" to="/about" tag="h1">Vårt kaffe</router-link>
+      <h1 class="router" @click="goTo('/about')">Vårt kaffe</h1>
       <br />
-      <router-link class="router" to="/OrderStatus" tag="h1">Order status</router-link>
+      <h1 class="router" @click="goTo('/OrderStatus')">Order status</h1>
     </section>
   </div>
 </template>
@@ -29,10 +29,11 @@ export default {
   methods: {
     closeMenu() {
       this.$store.commit('changeMenu')
+    },
+    goTo(path) {
+      this.$router.push(path)
+      this.closeMenu()
     }
-  },
-  beforeDestroy(){
-    this.$store.commit('changeMenu')
   }
 }
 </script>
@@ -45,29 +46,28 @@ export default {
   width: 2rem;
   padding: 1rem;
   position: fixed;
-  img{
+  img {
     width: 100%;
   }
-#nav{
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  background: #331a00;
-  top: 0;
-  z-index: 1;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  #nav {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: #331a00;
+    top: 0;
+    z-index: 1;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-  .router{
-    color: white;
-    text-decoration: none;
-    font-size: 3rem;
-    margin: 3rem;
+    .router {
+      color: white;
+      text-decoration: none;
+      font-size: 3rem;
+      margin: 3rem;
+    }
   }
-}
-
 }
 </style>

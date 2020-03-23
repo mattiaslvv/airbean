@@ -30,9 +30,8 @@ export default {
   width: 2rem;
   padding: 1rem;
   position: fixed;
-  img{
+  img {
     width: 100%;
   }
 }
-
 </style>
