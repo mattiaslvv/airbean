@@ -2,9 +2,9 @@
   <div>
     <h2>{{item.title}}</h2>
     <h6>{{item.price}}</h6>
-    <button @click="addToCart(item.id)">^</button>
+    <img src="@/assets/graphics/arrow-up.svg" alt="Arrow up" @click="addToCart(item.id)" />
     <h6>{{countItem}}</h6>
-    <button id="remove" @click="removeFromCart(item.id)">^</button>
+    <img src="@/assets/graphics/arrow-down.svg" alt="Arrow down" @click="removeFromCart(item.id)" />
   </div>
 </template>
 
