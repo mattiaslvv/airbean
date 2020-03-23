@@ -1,12 +1,22 @@
 <template>
   <section id="burgerWrapper">
-    <img id="burger" src="@/assets/graphics/navicon.svg" alt="Hamburgermenu" />
+    <img id="burger" src="@/assets/graphics/navicon.svg" alt="Hamburgermenu" @click="showMenu" />
+    <hamburger-menu />
   </section>
 </template>
 
 <script>
+import HamburgerMenu from './Hamburger.vue'
 export default {
-  name: "HamburgerIcon"
+  name: "HamburgerIcon",
+  components: {
+    'hamburger-menu': HamburgerMenu
+  },
+  methods: {
+    showMenu() {
+      this.$store.commit('changeMenu')
+    }
+  }
 }
 </script>
 
