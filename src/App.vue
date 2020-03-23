@@ -12,15 +12,5 @@
 </template>
 
 <style>
-<<<<<<< HEAD
-@import '/src/assets/scss/main.scss';
-=======
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
->>>>>>> 69efff89cf93ca2894ccf9df8cbbb5923066ae5a
+@import './assets/scss/main.scss';
 </style>

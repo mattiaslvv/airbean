@@ -19,15 +19,15 @@ margin:0;
 font-family: 'Oswald', sans-serif;
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
-background: $pink;
+background:#ff9999;;
 }
 
 #app{
     max-width:500px;
     margin: 0 auto;
-    
+}
 
-    main{
+    div{
         padding: 8rem 1,4rem;
         box-sizing: border-box;
         background: url('../graphics/graphics-header.svg'), url('../graphics/graphics-footer.svg');
@@ -39,4 +39,4 @@ background: $pink;
         width: 100%;
     }
 
-}
+
