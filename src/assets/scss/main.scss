@@ -14,6 +14,7 @@ p{
     font-family: 'Quicksand', sans-serif;
     line-height: 160%;
 }
+
 body{
 margin:0;
 font-family: 'Oswald', sans-serif;
@@ -22,10 +23,12 @@ font-family: 'Oswald', sans-serif;
 background:#ff9999;;
 }
 
+
+
 #app{
     max-width:500px;
     margin: 0 auto;
-}
+
 
     div{
         padding: 8rem 1,4rem;
@@ -35,8 +38,6 @@ background:#ff9999;;
         background-repeat: no-repeat, no-repeat;
         background-size: 100%;
     }
-    .headerimg{
-        width: 100%;
-    }
+}
 
 

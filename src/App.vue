@@ -1,15 +1,18 @@
 <template>
   <div id="app">
-    <!--
-    <div id="nav">
-      <router-link to="/">Home</router-link>|
-      <router-link to="/about">About</router-link>|
-      <router-link to="/Menu">Menu</router-link>|
-      <router-link to="/OrderStatus">Order Status</router-link>
-    </div>-->
+    <HamburgerIcon/>
     <router-view />
   </div>
 </template>
+<script>
+import HamburgerIcon from './components/HamburgerIcon.vue'
+export default {
+  name:"App",
+  components: {
+HamburgerIcon
+  },
+}
+</script>
 
 <style>
 @import './assets/scss/main.scss';
