@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img src="./../assets/graphics/airbean-landing.svg" alt="logoshit">
+    <img class="landing" src="./../assets/graphics/airbean-landing.svg" alt="logoshit">
   </div>
 </template>
 
@@ -19,10 +19,10 @@ export default {
 .home{
   height: 100vh;
   background-color:$green;
-  background-image: url('./../assets/graphics/intro-graphic-left.svg'),url('./../assets/graphics/intro-graphic-right.svg');
-  background-position: top left, top right;
-  background-size: 100%, 100%;
-  background-repeat: no-repeat;
+  background-image: url('./../assets/graphics/intro-graphic-left.svg'),url('./../assets/graphics/intro-graphic-right.svg') !important;
+  background-position: top left, top right !important;
+  background-size:50%,50% !important;
+  background-repeat: no-repeat,no-repeat !important;
   display: flex;
   justify-content: center;
   align-items: center;

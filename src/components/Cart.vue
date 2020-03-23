@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h1>Din beställning</h1>
+    <h1 class="cart">Din beställning</h1>
     <img v-if="loading" src="../assets/graphics/loader.png">
     <div v-else>
         <CartItem v-for="item in cartItems" :key="item.id" v-bind:item="item" :countItem="count(item)" />
-        <h2>Total</h2>
+        <h2 class="total">Total</h2>
         <span>{{totalPrice}}</span>
         <span>inkl moms + drönarleverans</span>
     </div>
@@ -52,4 +52,15 @@ export default {
 </script>
 
 <style>
+@import './../assets/scss/main.scss';
+
+.cart {
+    padding: 1rem;
+    top: 4rem;
+    right: 0;
+    margin: 1rem;
+    background-color: white;
+    border-radius: 0.30rem;
+}
+
 </style>

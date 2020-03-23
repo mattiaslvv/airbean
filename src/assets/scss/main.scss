@@ -1,12 +1,10 @@
+@import './colors.scss';
+
 :root {
     @import url("https://fonts.googleapis.com/css?family=Oswald|Quicksand&display=swap");
 }
 
- //Colors
-$pink:#ff9999;
-$green:#339966;
-$orange:#ff9933;
-$brown:#331a00;
+
 
 
 h1,h2,h3 {
@@ -15,31 +13,30 @@ h1,h2,h3 {
 p{
     font-family: 'Quicksand', sans-serif;
     line-height: 160%;
-
-    &.thickboi {
-        font-weight: 600;
-        font-size: 1rem;
-        margin: 0;
-        line-height: 140%;
-    }
 }
 body{
 margin:0;
 font-family: 'Oswald', sans-serif;
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
-background-color: $pink;
+background: $pink;
+}
+
 #app{
     max-width:500px;
     margin: 0 auto;
+    
 
-    > div{
+    main{
         padding: 8rem 1,4rem;
         box-sizing: border-box;
-        background-image: url('./../assets/graphics/graphics-header.svg'), url('./../assets/graphics/graphics-footer.svg');
+        background: url('../graphics/graphics-header.svg'), url('../graphics/graphics-footer.svg');
         background-position: top center, bottom center;
         background-repeat: no-repeat, no-repeat;
         background-size: 100%;
     }
-}
+    .headerimg{
+        width: 100%;
+    }
+
 }
