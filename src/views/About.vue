@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <HamburgerIcon />
+    <hamburger-icon />
     <h1>Vårt Kaffe</h1>
     <p
       class="thickboi"
@@ -18,7 +18,7 @@
 import HamburgerIcon from '../components/HamburgerIcon.vue'
 export default {
   components: {
-    HamburgerIcon
+    'hamburger-icon': HamburgerIcon
   }
 }
 </script>
