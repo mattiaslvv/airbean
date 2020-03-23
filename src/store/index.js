@@ -10,7 +10,8 @@ export default new Vuex.Store({
     cartItem: {},
     totalPrice: 0,
     menuItems: [],
-    orderInfo: {}
+    orderInfo: {},
+    showMenu: false
   },
   mutations: {
     getMenu(state, data) {
@@ -23,9 +24,12 @@ export default new Vuex.Store({
       state.cart.push(state.menuItems.find(item => item.id == id))
     },
     removeFromCart(state, id) {
-      let cartItem = state.cart.find(item => item.id == id)
-      let index = state.cart.indexOf(cartItem)
+      state.cartItem = state.cart.find(item => item.id == id)
+      let index = state.cart.indexOf(state.cartItem)
       state.cart.splice(index, 1)
+    },
+    changeMenu(state) {
+      state.showMenu = !state.showMenu
     }
   },
   actions: {
