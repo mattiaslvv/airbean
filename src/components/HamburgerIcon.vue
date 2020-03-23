@@ -1,5 +1,5 @@
 <template>
-  <section id="burgerWrapper">
+  <section class="burgerWrapper">
     <img id="burger" src="@/assets/graphics/navicon.svg" alt="Hamburgermenu" @click="showMenu" />
     <hamburger-menu />
   </section>
@@ -20,15 +20,19 @@ export default {
 }
 </script>
 
-<style scoped>
-#burgerWrapper {
+<style lang="scss">
+.burgerWrapper {
+  z-index: 9999;
   display: flex;
-  background-color: white;
+  background: white;
   border-radius: 100%;
-  height: 40px;
-  width: 40px;
+  height: 2rem;
+  width: 2rem;
+  padding: 1rem;
+  position: fixed;
+  img{
+    width: 100%;
+  }
 }
-#burger {
-  align-self: center;
-}
+
 </style>

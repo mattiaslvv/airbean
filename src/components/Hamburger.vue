@@ -1,14 +1,14 @@
 <template>
   <div id="wrapper" v-if="showMenu">
+          <nav class="burgerWrapper">
+        <img @click="closeMenu" src="@/assets/graphics/close.svg" alt="Close" />
+        </nav>
     <section id="nav">
-      <div id="imgWrapper" @click="closeMenu">
-        <img src="@/assets/graphics/close.svg" alt="Close" />
-      </div>
-      <router-link to="/Menu" tag="h1">Meny</router-link>
+      <router-link class="router" to="/Menu" tag="h1">Meny</router-link>
       <br />
-      <router-link to="/about" tag="h1">Vårt kaffe</router-link>
+      <router-link class="router" to="/about" tag="h1">Vårt kaffe</router-link>
       <br />
-      <router-link to="/OrderStatus" tag="h1">Order status</router-link>
+      <router-link class="router" to="/OrderStatus" tag="h1">Order status</router-link>
     </section>
   </div>
 </template>
@@ -36,37 +36,38 @@ export default {
   }
 }
 </script>
-<style scoped>
-#wrapper {
-  position: fixed;
-  left: 0;
-  translate: transform-X(0);
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.959);
-}
-#nav {
-  position: absolute;
-  top: 40%;
-  left: 40%;
-  translate: transform-X(-40%);
-  /*translate: transform-Y(-40%); */
-}
-#imgWrapper {
+<style lang="scss">
+.burgerWrapper {
   display: flex;
-  background-color: white;
+  background: white;
   border-radius: 100%;
-  height: 40px;
-  width: 40px;
+  height: 2rem;
+  width: 2rem;
+  padding: 1rem;
+  position: fixed;
+  img{
+    width: 100%;
+  }
+#nav{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: #331a00;
+  top: 0;
+  z-index: 1;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .router{
+    color: white;
+    text-decoration: none;
+    font-size: 3rem;
+    margin: 3rem;
+  }
 }
-img {
-  align-self: center;
-  height: 20px;
-  width: 20px;
-}
-h1 {
-  color: white;
-  text-decoration: none;
-  font-size: 2rem;
+
 }
 </style>

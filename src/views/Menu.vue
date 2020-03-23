@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="menu">
     <hamburger-icon />
     <MenuItem
       v-for="item in menuItems"
@@ -40,3 +40,12 @@ export default {
     }
 }
 </script>
+<style lang="scss">
+.menu{
+  height: 100vh;
+}
+h1{
+  margin:1rem;
+}
+
+</style>
