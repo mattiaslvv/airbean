@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <HamburgerIcon/>
+    <nav>
+      <hamburger-icon />
+    </nav>
     <router-view />
   </div>
 </template>
@@ -9,11 +11,13 @@ import HamburgerIcon from './components/HamburgerIcon.vue'
 export default {
   name:"App",
   components: {
-HamburgerIcon
-  },
+  'hamburger-icon': HamburgerIcon
+  }
 }
 </script>
-
 <style>
-@import './assets/scss/main.scss';
+@import "./assets/scss/main.scss";
+nav {
+  height: 8rem;
+}
 </style>

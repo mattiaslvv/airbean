@@ -1,6 +1,5 @@
 <template>
   <section class="menu">
-    <hamburger-icon />
     <MenuItem
       v-for="item in menuItems"
       v-bind:key="item.id"
@@ -14,12 +13,10 @@
 <script>
 import MenuItem from "../components/MenuItem"
 import Cart from "../components/Cart"
-import HamburgerIcon from '../components/HamburgerIcon'
 export default { 
   components:{
     MenuItem,
-    Cart,
-    'hamburger-icon': HamburgerIcon
+    Cart
   } ,  
   computed: {
       menuItems() {
@@ -41,11 +38,7 @@ export default {
 }
 </script>
 <style lang="scss">
-.menu{
-  height: 100vh;
+h1 {
+  margin: 1rem;
 }
-h1{
-  margin:1rem;
-}
-
 </style>

@@ -26,9 +26,11 @@ export default {
   display: flex;
   background: white;
   border-radius: 100%;
+  margin: 1rem;
   height: 2rem;
   width: 2rem;
   padding: 1rem;
+  margin-bottom: 5rem;
   position: fixed;
   img {
     width: 100%;
