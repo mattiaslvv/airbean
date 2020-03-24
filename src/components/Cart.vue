@@ -19,7 +19,7 @@
           <h2>{{totalPrice}} kr</h2>
         </div>
         <span>inkl moms + drönarleverans</span>
-        <button class="pay" @click="postItems">Take my money!</button>
+        <button class="pay" @click="postItems" v-if="loading==false">Take my money!</button>
       </div>
     </div>
   </div>
@@ -61,6 +61,7 @@ export default {
       await this.$store.dispatch("postOrderItems");
       this.$router.push("/orderstatus");
       this.loading = false;
+
     }
   }
 };
