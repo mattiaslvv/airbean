@@ -1,8 +1,10 @@
 <template>
-  <section class="burgerWrapper">
-    <img id="burger" src="@/assets/graphics/navicon.svg" alt="Hamburgermenu" @click="showMenu" />
+  <div>
+    <section class="burgerWrapper">
+      <img id="burger" src="@/assets/graphics/navicon.svg" alt="Hamburgermenu" @click="showMenu" />
+    </section>
     <hamburger-menu />
-  </section>
+  </div>
 </template>
 
 <script>
@@ -20,7 +22,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .burgerWrapper {
   z-index: 9999;
   display: flex;

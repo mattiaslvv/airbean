@@ -66,7 +66,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @import "./../assets/scss/main.scss";
 h1 {
   text-align: center;
