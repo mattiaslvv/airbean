@@ -11,7 +11,8 @@ export default new Vuex.Store({
     totalPrice: 0,
     menuItems: [],
     orderInfo: {},
-    showMenu: false
+    showMenu: false,
+    showCart: false,
   },
   mutations: {
     getMenu(state, data) {
@@ -30,6 +31,9 @@ export default new Vuex.Store({
     },
     changeMenu(state) {
       state.showMenu = !state.showMenu
+    },
+    changeCart(state) {
+      state.showCart = !state.showCart
     }
   },
   actions: {

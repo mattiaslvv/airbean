@@ -1,12 +1,17 @@
 <template>
-  <div>
+  <div class="cartBground" v-if="showCart">
     <h1 class="cart">Din beställning</h1>
-    <img v-if="loading" src="../assets/graphics/loader.png">
+    <img v-if="loading" src="../assets/graphics/loader.png" />
     <div v-else>
-        <CartItem v-for="item in cartItems" :key="item.id" v-bind:item="item" :countItem="count(item)" />
-        <h2 class="total">Total</h2>
-        <span>{{totalPrice}}</span>
-        <span>inkl moms + drönarleverans</span>
+      <CartItem
+        v-for="item in cartItems"
+        :key="item.id"
+        v-bind:item="item"
+        :countItem="count(item)"
+      />
+      <h2 class="total">Total</h2>
+      <span>{{totalPrice}}</span>
+      <span>inkl moms + drönarleverans</span>
     </div>
     <button @click="postItems">Take my money!</button>
   </div>
@@ -32,6 +37,9 @@ export default {
             let idMap = [...new Set(this.items.map(item => item.id))]
             // hitta item för alla id
             return idMap.map(id => this.items.find(item => item.id == id))
+        },
+        showCart() {
+            return this.$store.state.showCart
         }
     },
     methods:{
@@ -52,15 +60,17 @@ export default {
 </script>
 
 <style>
-@import './../assets/scss/main.scss';
-
+@import "./../assets/scss/main.scss";
 .cart {
-    padding: 1rem;
-    top: 4rem;
-    right: 0;
-    margin: 1rem;
-    background-color: white;
-    border-radius: 0.30rem;
+  padding: 1rem;
+  top: 4rem;
+  right: 0;
+  margin: 1rem;
+  background-color: white;
+  border-radius: 0.3rem;
 }
-
+.cartBground {
+  background-color: white;
+  color: black;
+}
 </style>
