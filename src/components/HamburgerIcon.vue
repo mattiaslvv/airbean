@@ -6,18 +6,18 @@
 </template>
 
 <script>
-import HamburgerMenu from './Hamburger.vue'
+import HamburgerMenu from "./Hamburger.vue";
 export default {
   name: "HamburgerIcon",
   components: {
-    'hamburger-menu': HamburgerMenu
+    "hamburger-menu": HamburgerMenu
   },
   methods: {
     showMenu() {
-      this.$store.commit('changeMenu')
+      this.$store.commit("changeMenu");
     }
   }
-}
+};
 </script>
 
 <style lang="scss">
@@ -31,7 +31,7 @@ export default {
   width: 2rem;
   padding: 1rem;
   margin-bottom: 5rem;
-  position: fixed;
+  position: absolute;
   img {
     width: 100%;
   }
