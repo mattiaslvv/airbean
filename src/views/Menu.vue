@@ -2,6 +2,7 @@
   <section class="menu">
     <nav class="burger">
       <hamburger-icon />
+      <cart-icon />
     </nav>
     <MenuItem
       v-for="item in menuItems"
@@ -9,18 +10,16 @@
       @click.native="addToCart(item.id)"
       v-bind:item="item"
     />
-    <h1>Cart</h1>
-    <Cart />
   </section>
 </template>
 <script>
 import MenuItem from "../components/MenuItem"
-import Cart from "../components/Cart"
+import CartIcon from "../components/CartIcon"
 import HamburgerIcon from '../components/HamburgerIcon'
 export default { 
   components:{
     MenuItem,
-    Cart,
+    'cart-icon': CartIcon,
     'hamburger-icon': HamburgerIcon
   } ,  
   computed: {
