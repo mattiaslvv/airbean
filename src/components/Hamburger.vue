@@ -31,8 +31,7 @@ export default {
       this.$store.commit('changeMenu')
     },
     goTo(path) {
-      this.$router.push(path)
-      this.closeMenu()
+      this.$router.push(path).then(this.closeMenu()).catch(err => {})
     }
   }
 }
