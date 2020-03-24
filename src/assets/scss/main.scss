@@ -29,15 +29,30 @@ background:#ff9999;;
     max-width:500px;
     margin: 0 auto;
 
-
+    
     div{
         padding: 8rem 1,4rem;
         box-sizing: border-box;
-        background: url('../graphics/graphics-header.svg'), url('../graphics/graphics-footer.svg');
-        background-position: top center, bottom center;
-        background-repeat: no-repeat, no-repeat;
-        background-size: 100%;
     }
+    
 }
+
+header {
+    height: 150px;
+    background: url('../graphics/graphics-header.svg');
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+  
+  footer {
+    height: 150px;
+    background: url('../graphics/graphics-footer.svg');
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin-top:50px;
+  }
+
 
 
