@@ -3,14 +3,10 @@
     <img src="./../assets/graphics/airbean-landing.svg" alt="logoshit" @click="goToMenu" />
   </div>
 </template>
-
 <script>
 // @ is an alias to /src
-
 export default {
   name: 'Home',
-  components: {
-  },
   methods: {
     goToMenu() {
       this.$router.push('/menu')
@@ -19,7 +15,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import url('./../assets/scss/colors.scss');
+@import url("./../assets/scss/colors.scss");
 
 .home {
   height: 100vh;

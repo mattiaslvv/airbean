@@ -1,5 +1,8 @@
 <template>
   <div class="about">
+    <nav class="burger">
+      <hamburger-icon />
+    </nav>
     <h1>Vårt Kaffe</h1>
     <p
       class="thickboi"
@@ -14,7 +17,12 @@
   </div>
 </template>
 <script>
+import HamburgerIcon from '../components/HamburgerIcon'
 export default {
+  name: "Home",
+  components: {
+    'hamburger-icon': HamburgerIcon
+  }
 }
 </script>
 <style lang="scss">

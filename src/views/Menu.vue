@@ -1,5 +1,8 @@
 <template>
   <section class="menu">
+    <nav class="burger">
+      <hamburger-icon />
+    </nav>
     <MenuItem
       v-for="item in menuItems"
       v-bind:key="item.id"
@@ -13,10 +16,12 @@
 <script>
 import MenuItem from "../components/MenuItem"
 import Cart from "../components/Cart"
+import HamburgerIcon from '../components/HamburgerIcon'
 export default { 
   components:{
     MenuItem,
-    Cart
+    Cart,
+    'hamburger-icon': HamburgerIcon
   } ,  
   computed: {
       menuItems() {
