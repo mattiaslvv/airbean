@@ -29,7 +29,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .cartListItem {
   display: flex;
   width: 100%;
