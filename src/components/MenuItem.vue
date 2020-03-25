@@ -40,6 +40,10 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  &:hover{
+    animation: shadow-pulse 1s infinite;
+  }
 }
 
 .add img {
@@ -52,4 +56,16 @@ p {
 h2 {
   margin-top: 0;
 }
+//animations
+
+@keyframes shadow-pulse
+{
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 35px rgba(0, 0, 0, 0);
+  }
+}
+
 </style>

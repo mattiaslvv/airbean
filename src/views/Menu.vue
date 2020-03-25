@@ -2,7 +2,11 @@
   <section class="menu">
     <header>
       <nav class="burger">
+      <transition
+      name="fade"
+      mode="out-in">
         <hamburger-icon />
+      </transition>
         <cart-icon />
       </nav>
     </header>
@@ -46,5 +50,19 @@ h1 {
 }
 .menu {
   position: relative;
+  height: 100vh;
+}
+
+//animation
+.fade-enter-active,
+.fade-leave-active {
+  transition-duration: 1s;
+  transition-property:opacity;
+  transition-timing-function: ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0
 }
 </style>

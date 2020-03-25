@@ -2,7 +2,11 @@
   <div class="about">
     <header>
       <nav class="burger">
+      <transition
+      name="fade"
+      mode="out-in">
         <hamburger-icon />
+      </transition>
       </nav>
     </header>
     <h1>Vårt Kaffe</h1>
@@ -66,5 +70,20 @@ export default {
     padding: 0;
     font-size: 1rem;
   }
+}
+
+//animation
+
+.fade-enter-active,
+.fade-leave-active {
+  transition-duration: 0.3s;
+  transition-property: height, opacity;
+  transition-timing-function: ease;
+  overflow: hidden;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0
 }
 </style>
