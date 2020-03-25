@@ -4,13 +4,14 @@ const app = express()
 
 const beansRouter = require('./routes/beans')
 const dbOperations = require('./local_modules/orderOperations')
+const orderRouter = require('./routes/orders')
 const PORT = 5000
 
 
 app.use(cors())
 app.use(express.json())
 app.use('/api/beans', beansRouter)
-app.use('/api/', dbOperations)
+app.use('/api/', orderRouter)
 
 
 
