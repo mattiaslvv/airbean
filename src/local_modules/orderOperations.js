@@ -5,25 +5,30 @@ const database = lowdb(adapter);
 const {
   v1: uuidv1
 } = require('uuid');
-
+const {
+  v4: uuidv4
+} = require('uuid');
 
 exports.addToOrders = orderInfo => {
+  const nr = uuidv4();
   const addOrder = database
     .get("orders")
     .push({
-      orderNumber: orderInfo.id,
+      orderNumber: nr,
       timeStamp: uuidv1(), //uuidv1(),
-      Items: orderInfo.items,
-      totalValue: orderInfo.value
+      items: orderInfo.items,
+      totalValue: orderInfo.totalValue
     })
     .write();
+  let addedOrder = database.get('orders').find({
+    orderNumber: nr
+  }).value()
   let response = {
     success: true,
     status: "201",
     message: "Successfully confirmed order.",
-    data: addOrder
-  };
-
+    data: addedOrder
+  }
   return response;
 };
 
