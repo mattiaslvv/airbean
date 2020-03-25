@@ -15,7 +15,7 @@ app.use('/api/', orderRouter)
 
 
 
-app.listen(PORT, () => {
+app.listen(5000, () => {
   console.log("Server started on port ", PORT);
   dbOperations.initiateDatabase();
 });
