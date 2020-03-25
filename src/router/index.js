@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Menu from '../views/Menu.vue'
 import OrderStatus from '../views/OrderStatus.vue'
+import Profile from '../views/Profile.vue'
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,11 @@ const routes = [{
     name: 'OrderStatus',
     component: OrderStatus
   },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile
+  }
 ]
 
 const router = new VueRouter({
