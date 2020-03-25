@@ -4,7 +4,7 @@
     <img src="@/assets/graphics/drone.svg" alt="Airbean Drone" />
     <h1>Din beställning är på väg</h1>
     <h3>{{orderInfo.eta}} minuter</h3>
-    <button class="cool">OK, cool</button>
+    <a href="/menu"><button class="cool">OK, cool</button></a>
   </section>
 </template>
 <script>
