@@ -19,7 +19,10 @@ export default new Vuex.Store({
       state.menuItems = data
     },
     postOrder(state, data) {
-      state.orderInfo = data
+      state.orderInfo = {
+        orderNr: data.orderNumber,
+        eta: '13'
+      }
     },
     addToCart(state, id) {
       state.cart.push(state.menuItems.find(item => item.id == id))
@@ -43,7 +46,11 @@ export default new Vuex.Store({
       return true
     },
     async postOrderItems(context) {
-      const data = await API.postItems()
+      const order = {
+        items: context.state.cart,
+        totalValue: context.state.totalPrice
+      }
+      const data = await API.addOrder(order)
       context.commit('postOrder', data)
       return true
     },

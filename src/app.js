@@ -6,12 +6,15 @@ const beansRouter = require('./routes/beans')
 const dbOperations = require('./local_modules/orderOperations')
 const orderRouter = require('./routes/orders')
 const PORT = 5000
+const bodyParser = require("body-parser");
 
 
 app.use(cors())
 app.use(express.json())
 app.use('/api/beans', beansRouter)
-app.use('/api/', orderRouter)
+app.use('/api/profile', orderRouter)
+app.use(bodyParser.json())
+
 
 
 
