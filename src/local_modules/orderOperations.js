@@ -1,17 +1,18 @@
 const lowdb = require("lowdb");
 const fileSync = require("lowdb/adapters/FileSync");
-const adapter = new fileSync("database.json");
+const adapter = new fileSync("./assets/data/database.json");
 const database = lowdb(adapter);
-import {
-  v1 as uuidv1
-} from 'uuid';
+const {
+  v1: uuidv1
+} = require('uuid');
+
 
 exports.addToOrders = orderInfo => {
   const addOrder = database
     .get("orders")
     .push({
       orderNumber: orderInfo.id,
-      timeStamp: uuidv1(),
+      timeStamp: uuidv1(), //uuidv1(),
       Items: orderInfo.items,
       totalValue: orderInfo.value
     })
@@ -46,8 +47,7 @@ exports.findFromOrders = orderNumber => {
 
 /*** INITIATE DATABASE IF THERE IS NONE ***/
 exports.initiateDatabase = () => {
-  const ordersInit = database.has("ordes").value();
-
+  const ordersInit = database.has("orders").value();
   if (!ordersInit) {
     database.defaults({
       orders: []

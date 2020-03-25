@@ -4,9 +4,10 @@ const {
 const router = new Router()
 const bodyParser = require("body-parser");
 const orderOperations = require("../local_modules/orderOperations");
-import {
-  v4 as uuidv4
-} from 'uuid';
+const {
+  v4: uuidv4
+} = require('uuid');
+
 
 router.get('/profile', async (req, res) => {
   const orderNumber = req.query.uuid
@@ -21,7 +22,7 @@ router.post('/profile', async (req, res) => {
 });
 
 router.get('/key', (req, res) => {
-  const key = uuidv4();
+  const key = uuidv4() //uuidv4();
   res.send(key)
 })
 
