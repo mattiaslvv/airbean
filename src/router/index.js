@@ -31,7 +31,7 @@ const routes = [{
     component: OrderStatus
   },
   {
-    path: '/profile',
+    path: '/profile/:uuid',
     name: 'Profile',
     component: Profile
   }

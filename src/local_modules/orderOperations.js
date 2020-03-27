@@ -9,11 +9,12 @@ const {
   v4: uuidv4
 } = require('uuid');
 
-exports.addToOrders = orderInfo => {
+exports.addToOrders = (orderInfo) => {
   const nr = uuidv4();
   const addOrder = database
     .get("orders")
     .push({
+      userID: orderInfo.userID,
       orderNumber: nr,
       timeStamp: uuidv1(), //uuidv1(),
       items: orderInfo.items,
@@ -32,11 +33,11 @@ exports.addToOrders = orderInfo => {
   return response;
 };
 
-exports.findFromOrders = orderNumber => {
-  const findOrder = database
+exports.findFromOrders = userID => {
+  const findOrders = database
     .get("orders")
     .filter({
-      orderNumber: orderNumber
+      userID: userID
     })
     .write();
 
@@ -44,7 +45,7 @@ exports.findFromOrders = orderNumber => {
     success: true,
     status: "200",
     message: "Orders found",
-    data: findOrder
+    data: findOrders
   };
 
   return response;
