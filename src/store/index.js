@@ -13,6 +13,7 @@ export default new Vuex.Store({
     orderInfo: {},
     showMenu: false,
     showCart: false,
+    userID: "",
   },
   mutations: {
     getMenu(state, data) {
@@ -37,6 +38,15 @@ export default new Vuex.Store({
     },
     changeCart(state) {
       state.showCart = !state.showCart
+    },
+    changeUserID(state, userID) {
+      state.userID = userID
+    },
+    localStorage(state) {
+      console.log('App mounted!');
+      if (localStorage.getItem('uuid')) {
+        state.userID = JSON.parse(localStorage.getItem('uuid'));
+      }
     }
   },
   actions: {
@@ -46,7 +56,11 @@ export default new Vuex.Store({
       return true
     },
     async postOrderItems(context) {
+      if (context.state.userID == '') {
+        await context.dispatch('getNewUserID')
+      }
       const order = {
+        userID: context.getters.checkUserID,
         items: context.state.cart,
         totalValue: context.state.totalPrice
       }
@@ -54,11 +68,25 @@ export default new Vuex.Store({
       context.commit('postOrder', data)
       return true
     },
+    async getNewUserID(context) {
+      const data = await API.getKey()
+      await context.dispatch('changeThisUserID', data.data)
+      context.dispatch('persistance')
+      return true
+    },
     addThisToCart(context, id) {
       context.commit('addToCart', id)
     },
     removeThisFromCart(context, id) {
       context.commit('removeFromCart', id)
+    },
+    persistance(context) {
+      console.log('uuid created');
+      localStorage.setItem('uuid', context.state.userID);
+    },
+    changeThisUserID(context, userID) {
+      context.commit('changeUserID', userID)
+      return true
     }
   },
   getters: {
@@ -66,6 +94,10 @@ export default new Vuex.Store({
       state.totalPrice = 0
       state.cart.forEach(item => state.totalPrice += item.price)
       return state.totalPrice
+    },
+    checkUserID() {
+      console.log(localStorage.getItem('uuid'))
+      return localStorage.getItem('uuid')
     }
   }
 })

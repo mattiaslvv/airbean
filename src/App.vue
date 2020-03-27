@@ -1,14 +1,14 @@
 <template>
   <div id="app">
-      <transition
+    <transition
       name="fade"
       mode="out-in"
       @beforeLeave="beforeLeave"
       @enter="enter"
       @afterEnter="afterEnter"
-      >
-      <router-view/>
-      </transition>
+    >
+      <router-view />
+    </transition>
   </div>
 </template>
 <script>
@@ -36,6 +36,9 @@ export default {
       element.style.height = 'auto';
     },
   },
+  mounted() {
+    this.$store.commit('localStorage')
+  }
 };
 </script>
 <style>
@@ -50,7 +53,6 @@ export default {
 
 .fade-enter,
 .fade-leave-active {
-  opacity: 0
+  opacity: 0;
 }
-
 </style>

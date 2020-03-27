@@ -18,6 +18,7 @@ export async function postItems() {
 
 export async function addOrder(order) {
   const data = {
+    userID: order.userID,
     items: order.items,
     totalValue: order.totalValue
   }
@@ -26,18 +27,11 @@ export async function addOrder(order) {
       "Content-Type": "application/json"
     },
   })
-  // .then((response) => {
-  //   console.log(response);
-
-  // }, (error) => {
-  //   console.log(error);
-  // });
   const respData = response.data.data
   return respData
 }
 
-
-// export default {
-//   postItems,
-//   getItems
-// }
+export async function getKey() {
+  const response = await api.get('/profile/key')
+  return response
+}
