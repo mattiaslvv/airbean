@@ -13,7 +13,7 @@
       <h1 class="router btn" @click="goTo('/orderstatus')">Order status</h1>
       <br />
       <div class="line"></div>
-      <h1 class="router btn" @click="goTo('/profile')">Min Profil</h1>
+      <h1 class="router btn" @click="goTo('/profile/' + userID)">Min Profil</h1>
     </section>
   </div>
 </template>
@@ -29,6 +29,14 @@ export default {
   computed: {
     showMenu() {
       return this.$store.state.showMenu;
+    },
+    userID(){
+      console.log(this.$store.getters.checkUserID)
+      if (this.$store.getters.checkUserID == null) {
+        return "login"
+      } else {
+      return this.$store.getters.checkUserID
+      }
     }
   },
   methods: {

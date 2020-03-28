@@ -31,7 +31,12 @@ export async function addOrder(order) {
   return respData
 }
 
+export async function getOrderHistory(userID) {
+  const response = await api.get('/profile/' + userID)
+  return response.data
+}
+
 export async function getKey() {
-  const response = await api.get('/profile/key')
+  const response = await api.get('/key')
   return response
 }

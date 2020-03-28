@@ -3,9 +3,6 @@ const fileSync = require("lowdb/adapters/FileSync");
 const adapter = new fileSync("./assets/data/database.json");
 const database = lowdb(adapter);
 const {
-  v1: uuidv1
-} = require('uuid');
-const {
   v4: uuidv4
 } = require('uuid');
 
@@ -16,7 +13,7 @@ exports.addToOrders = (orderInfo) => {
     .push({
       userID: orderInfo.userID,
       orderNumber: nr,
-      timeStamp: uuidv1(), //uuidv1(),
+      timeStamp: Date.now(), //uuidv1(),
       items: orderInfo.items,
       totalValue: orderInfo.totalValue
     })
@@ -40,15 +37,22 @@ exports.findFromOrders = userID => {
       userID: userID
     })
     .write();
-
-  let response = {
-    success: true,
-    status: "200",
-    message: "Orders found",
-    data: findOrders
-  };
-
-  return response;
+  if (findOrders) {
+    let response = {
+      success: true,
+      status: "200",
+      message: "Orders found",
+      data: findOrders
+    }
+    return response;
+  } else {
+    let response = {
+      success: false,
+      status: "404",
+      message: "No orders found",
+    }
+    return response;
+  }
 }
 
 /*** INITIATE DATABASE IF THERE IS NONE ***/

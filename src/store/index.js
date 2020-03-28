@@ -13,7 +13,9 @@ export default new Vuex.Store({
     orderInfo: {},
     showMenu: false,
     showCart: false,
-    userID: "",
+    userID: "login",
+    orderHistory: [],
+    orderHistorySpent: 0
   },
   mutations: {
     getMenu(state, data) {
@@ -42,10 +44,15 @@ export default new Vuex.Store({
     changeUserID(state, userID) {
       state.userID = userID
     },
+    getOrderHistory(state, orders) {
+      state.orderHistory = orders
+    },
     localStorage(state) {
       console.log('App mounted!');
       if (localStorage.getItem('uuid')) {
-        state.userID = JSON.parse(localStorage.getItem('uuid'));
+        const data = JSON.parse(localStorage.getItem('uuid'))
+        const dataUID = data.userID
+        state.userID = dataUID
       }
     }
   },
@@ -56,11 +63,11 @@ export default new Vuex.Store({
       return true
     },
     async postOrderItems(context) {
-      if (context.state.userID == '') {
+      if (context.state.userID == 'login') {
         await context.dispatch('getNewUserID')
       }
       const order = {
-        userID: context.getters.checkUserID,
+        userID: context.state.userID,
         items: context.state.cart,
         totalValue: context.state.totalPrice
       }
@@ -68,11 +75,22 @@ export default new Vuex.Store({
       context.commit('postOrder', data)
       return true
     },
-    async getNewUserID(context) {
-      const data = await API.getKey()
-      await context.dispatch('changeThisUserID', data.data)
-      context.dispatch('persistance')
-      return true
+    async getNewUserID(context, userinfo) {
+      if (userinfo) {
+        const data = await API.getKey()
+        await context.dispatch('changeThisUserID', data.data)
+        context.dispatch('persistance', userinfo)
+        return true
+      } else {
+        const data = await API.getKey()
+        await context.dispatch('changeThisUserID', data.data)
+        context.dispatch('persistance')
+        return true
+      }
+    },
+    async getOrderHistory(context, userID) {
+      const data = await API.getOrderHistory(userID)
+      context.commit('getOrderHistory', data.data)
     },
     addThisToCart(context, id) {
       context.commit('addToCart', id)
@@ -80,14 +98,34 @@ export default new Vuex.Store({
     removeThisFromCart(context, id) {
       context.commit('removeFromCart', id)
     },
-    persistance(context) {
+    persistance(context, userinfo) {
       console.log('uuid created');
-      localStorage.setItem('uuid', context.state.userID);
+      if (userinfo) {
+        const data = {
+          userID: context.state.userID,
+          username: userinfo.username,
+          email: userinfo.email
+        }
+        localStorage.setItem('uuid', JSON.stringify(data))
+      } else {
+        const data = {
+          userID: context.state.userID
+        }
+        localStorage.setItem('uuid', JSON.stringify(data))
+      }
+    },
+    updateUserInfo(context, userinfo) {
+      const data = {
+        userID: context.getters.checkUserID,
+        username: userinfo.username,
+        email: userinfo.email
+      }
+      localStorage.setItem('uuid', JSON.stringify(data))
     },
     changeThisUserID(context, userID) {
       context.commit('changeUserID', userID)
       return true
-    }
+    },
   },
   getters: {
     totalPrice(state) {
@@ -95,9 +133,34 @@ export default new Vuex.Store({
       state.cart.forEach(item => state.totalPrice += item.price)
       return state.totalPrice
     },
+    orderHistorySpent(state) {
+      state.orderHistorySpent = 0
+      state.orderHistory.forEach(item => state.orderHistorySpent += item.totalValue)
+      return state.orderHistorySpent
+    },
     checkUserID() {
-      console.log(localStorage.getItem('uuid'))
-      return localStorage.getItem('uuid')
+      const data = JSON.parse(localStorage.getItem('uuid'))
+      if (data == null) {
+        return 'login'
+      } else {
+        return data.userID
+      }
+    },
+    getUserName() {
+      const data = JSON.parse(localStorage.getItem('uuid'))
+      if (data == null) {
+        return false
+      } else {
+        return data.username
+      }
+    },
+    getUserEmail() {
+      const data = JSON.parse(localStorage.getItem('uuid'))
+      if (data == null) {
+        return false
+      } else {
+        return data.email
+      }
     }
   }
 })
