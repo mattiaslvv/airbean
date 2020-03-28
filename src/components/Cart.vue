@@ -61,7 +61,6 @@ export default {
       await this.$store.dispatch("postOrderItems");
       this.$router.push("/orderstatus");
       this.loading = false;
-
     }
   }
 };

@@ -8,13 +8,13 @@ const {
 } = require('uuid');
 
 
-router.get('/', async (req, res) => {
-  const orderNumber = req.query.uuid
+router.get('/profile/:uuid', async (req, res) => {
+  const orderNumber = req.params.uuid
   const data = await orderOperations.findFromOrders(orderNumber)
   res.send(data)
 });
 
-router.post('/', async (req, res) => {
+router.post('/profile', async (req, res) => {
   const orderInfo = req.body
   const data = await orderOperations.addToOrders(orderInfo)
   res.send(data)
