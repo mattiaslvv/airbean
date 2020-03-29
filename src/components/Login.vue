@@ -5,7 +5,7 @@
     <label for="email">E-mail:</label>
     <input name="email" type="text" v-model="userEmail" />
     <input type="checkbox" id="gdpr" name="gdpr" value="true" v-model="gdprAccepted" />
-    <button @click="register"></button>
+    <button @click="register" :disabled="!gdprAccepted"></button>
   </section>
 </template>
 <script>
