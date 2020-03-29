@@ -363,6 +363,26 @@
         }
       ],
       "totalValue": 137
+    },
+    {
+      "userID": "a835ee37-caa8-4498-a78b-60c1cedc63be",
+      "orderNumber": "da0dee03-78df-4a6b-86d1-f41806330a31",
+      "timeStamp": 1585522660830,
+      "items": [
+        {
+          "id": 1,
+          "title": "Bryggkaffe",
+          "desc": "Bryggd på månadens bönor.",
+          "price": 39
+        },
+        {
+          "id": 3,
+          "title": "Cappuccino",
+          "desc": "Bryggd på månadens bönor.",
+          "price": 49
+        }
+      ],
+      "totalValue": 88
     }
   ]
 }
