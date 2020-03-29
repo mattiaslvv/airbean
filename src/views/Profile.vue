@@ -14,15 +14,22 @@
       <p>{{userEmail}}</p>
       <ul>
         <h2>Order History</h2>
-        <li v-for="order in orderHistory" :key="order.orderNumber">
-          Ordernummer: {{order.orderNumber}}
-          <br />
-          Kostnad: {{order.totalValue}}:-
-          <br />
-          Datum: {{writeDate(order.timeStamp)}}
+        <li v-for="order in orderHistory" :key="order.orderNumber" class="order">
+          <div>
+          <h4>{{order.orderNumber}}</h4>
+          <span>total ordersumma</span>
+          </div>
+          <div>
+          <h4>{{writeDate(order.timeStamp)}}</h4>
+          <span>{{order.totalValue}} kr</span>
+          </div>
+          
         </li>
-        <h1>Totalt spenderat: {{orderHistorySpent}}:-</h1>
-      </ul>
+        </ul>
+        <div class="total">
+        <h1>Totalt spenderat</h1><h1>{{orderHistorySpent}} kr</h1>
+        </div>
+      
     </article>
   </section>
 </template>
@@ -78,6 +85,7 @@ export default {
     display: flex;
     align-items: center;
     flex-direction: column;
+    
   }
   .user{
     width: 8rem;
@@ -87,6 +95,16 @@ export default {
     padding: 1rem;
     position:static;
   }
+  .total {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    border-top: 1px solid white;
+    h1{
+      color:white;
+    }
+  }
+  
   h2{
     margin: 1rem 0 0 0;
     text-align: center;
@@ -97,11 +115,24 @@ export default {
   }
 }
 ul{
+  width: 90%;
   list-style: none;
   display: flex;
-  align-items: center;
   flex-direction: column;
   padding: 0;
   margin: 0;
+  .order{
+    display: flex;
+    justify-content:space-between;
+    border-bottom:1px solid rgb(168, 168, 168);
+    span{
+      color:rgb(168, 168, 168);
+    }
+    h4{
+      color:rgb(214, 214, 214);
+    }
+  }
+  
 }
+
 </style>
