@@ -20,7 +20,7 @@
   <p class="ok">GDPR OK!</p>
 </label>
     <section class="buttons">
-  <button @click="register" class="blob-btn">
+  <button @click="register" class="blob-btn" :disabled ="!gdprAccepted">
     Brew me a cup!
     <span class="blob-btn__inner">
       <span class="blob-btn__blobs">
