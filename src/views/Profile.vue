@@ -16,7 +16,7 @@
           <br />
           Kostnad: {{order.totalValue}}:-
           <br />
-          Datum: {{order.timeStamp}}
+          Datum: {{writeDate(order.timeStamp)}}
         </li>
         <h1>Totalt spenderat: {{orderHistorySpent}}:-</h1>
       </ul>
@@ -43,6 +43,11 @@ export default {
     },
     userEmail() {
       return this.$store.getters.getUserEmail
+    }
+  },
+  methods: {
+    writeDate(d) {
+      return new Date(d).toLocaleDateString().split("-").join("/");
     }
   },
   data () {
