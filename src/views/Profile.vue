@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="profile">
     <header>
       <nav class="burger">
         <transition name="fade" mode="out-in">
@@ -9,8 +9,11 @@
     </header>
     <login />
     <article v-if="userEmail !== false">
-      {{userName}} {{userEmail}}
+      <img class="user" src="@/assets/graphics/user.svg" alt="user">
+      <h2>{{userName}}</h2> 
+      <p>{{userEmail}}</p>
       <ul>
+        <h2>Order History</h2>
         <li v-for="order in orderHistory" :key="order.orderNumber">
           Ordernummer: {{order.orderNumber}}
           <br />
@@ -64,5 +67,41 @@ export default {
   }
 }
 </script>
-<style lang="sass" scoped>
+<style lang="scss">
+.profile article{
+  height: 100vh;
+}
+.profile{
+  background: #331a00;
+  height: 100vh;
+  article{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .user{
+    width: 8rem;
+    height: 8rem;
+    background: white;
+    border-radius: 999rem;
+    padding: 1rem;
+    position:static;
+  }
+  h2{
+    margin: 1rem 0 0 0;
+    text-align: center;
+    color: white;
+  }
+  p{
+    color: rgba($color: #ffffff, $alpha: 0.6);
+  }
+}
+ul{
+  list-style: none;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+}
 </style>
