@@ -32,7 +32,6 @@
     </span>
   </button>
     </section>
-
   </section>
 </template>
 <script>
