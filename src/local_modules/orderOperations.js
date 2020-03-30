@@ -34,7 +34,7 @@ exports.findFromOrders = userID => {
   const findOrders = database
     .get("orders")
     .filter({
-      userID: userID
+      userID: userIs
     })
     .write();
   if (findOrders) {
