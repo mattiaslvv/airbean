@@ -73,18 +73,17 @@ export default {
 </script>
 <style lang="scss" scoped>
 #login {
-  margin-left: 2.1rem;
-  height: 89vh;
+  height: 80vh;
   width: 65vh;
-  padding: 1, 5rem;
   box-sizing: border-box;
   background: #ff9999;
-  box-shadow: 0 0 5rem #000000 alpha(1);
+  box-shadow:0px 0px 200px 150px rgba($color: #000000, $alpha: 0.5);
   display: flex;
   flex-direction: column;
   position: absolute;
   padding-right: 2rem;
   padding-left: 2rem;
+  bottom: 3vh;
   #header {
     display: flex;
     flex-direction: column;
