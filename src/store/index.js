@@ -16,7 +16,8 @@ export default new Vuex.Store({
     userID: "login",
     orderHistory: [],
     orderHistorySpent: 0,
-    userEmail: false
+    userEmail: false,
+    userName: false
   },
   mutations: {
     getMenu(state, data) {
@@ -47,6 +48,9 @@ export default new Vuex.Store({
     },
     changeUserEmail(state, userEmail) {
       state.userEmail = userEmail
+    },
+    changeUserName(state, userName) {
+      state.userName = userName
     },
     getOrderHistory(state, orders) {
       state.orderHistory = orders
@@ -151,12 +155,16 @@ export default new Vuex.Store({
         return data.userID
       }
     },
-    getUserName() {
+    getUserName(state) {
+      if (state.userName) {
+        return state.userName
+      }
       const data = JSON.parse(localStorage.getItem('uuid'))
       if (data == null) {
         return false
       } else {
-        return data.username
+        state.userName = data.username
+        return state.userName
       }
     },
     getUserEmail(state) {
