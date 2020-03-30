@@ -1,5 +1,5 @@
 <template>
-    <section class="profile" style="height: 100vh;">
+    <section class="profile">
         <header>
             <nav class="burger">
             <transition name="fade" mode="out-in">
@@ -80,6 +80,7 @@ beforeMount() {
 }
 .profile{
     background: #331a00;
+    height: 100vh;
     article{
     display: flex;
     align-items: center;
