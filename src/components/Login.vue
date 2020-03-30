@@ -77,7 +77,7 @@ export default {
   width: 65vh;
   box-sizing: border-box;
   background: #ff9999;
-  box-shadow:0px 0px 200px 150px rgba($color: #000000, $alpha: 0.5);
+  box-shadow:0px 0px 20px 20px rgba($color: #000000, $alpha: 0.5);
   display: flex;
   flex-direction: column;
   position: absolute;
