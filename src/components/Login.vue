@@ -1,9 +1,9 @@
 <template>
   <section id="login" v-if="!checkEmail">
     <div id="header">
-      <img class="logo" src="@/assets/graphics/airbean-landing.svg" alt="logoshit">
+      <img class="logo" src="@/assets/graphics/airbean-landing.svg" alt="logoshit" />
       <h1>Välkommen till AirBean Familjen!</h1>
-      <br>
+      <br />
       <h4>Genom att skapa ett konto nedan kan du spara och se din orderhistorik</h4>
     </div>
     <label for="name">Name:</label>
@@ -11,26 +11,29 @@
     <label for="email">E-mail:</label>
     <input name="email" type="text" v-model="userEmail" />
     <label class="switch">
-  <input class="check" type="checkbox" 
-  id="gdpr" 
-  name="gdpr" 
-  value="true" 
-  v-model="gdprAccepted">
-  <span class="slider"></span>
-  <p class="ok">GDPR OK!</p>
-</label>
+      <input
+        class="check"
+        type="checkbox"
+        id="gdpr"
+        name="gdpr"
+        value="true"
+        v-model="gdprAccepted"
+      />
+      <span class="slider"></span>
+      <p class="ok">GDPR OK!</p>
+    </label>
     <section class="buttons">
-  <button @click="register" class="blob-btn" :disabled ="!gdprAccepted">
-    Brew me a cup!
-    <span class="blob-btn__inner">
-      <span class="blob-btn__blobs">
-        <span class="blob-btn__blob"></span>
-        <span class="blob-btn__blob"></span>
-        <span class="blob-btn__blob"></span>
-        <span class="blob-btn__blob"></span>
-      </span>
-    </span>
-  </button>
+      <button @click="register" class="blob-btn" :disabled="!gdprAccepted">
+        Brew me a cup!
+        <span class="blob-btn__inner">
+          <span class="blob-btn__blobs">
+            <span class="blob-btn__blob"></span>
+            <span class="blob-btn__blob"></span>
+            <span class="blob-btn__blob"></span>
+            <span class="blob-btn__blob"></span>
+          </span>
+        </span>
+      </button>
     </section>
   </section>
 </template>
@@ -62,60 +65,60 @@ export default {
       this.$router.push('/profile/' + this.userID)
       } else if(this.userID != 'login') {
       await this.$store.dispatch('updateUserInfo', data)
+      this.$router.go()
       }
     }
   }
 }
 </script>
 <style lang="scss" scoped>
-
-#login{
+#login {
   margin-left: 2.1rem;
   height: 89vh;
   width: 65vh;
-  padding: 1,5rem;
+  padding: 1, 5rem;
   box-sizing: border-box;
   background: #ff9999;
-  box-shadow: 0 0 5rem #000000 alpha(1.0);
+  box-shadow: 0 0 5rem #000000 alpha(1);
   display: flex;
   flex-direction: column;
   position: absolute;
   padding-right: 2rem;
   padding-left: 2rem;
-  #header{
-display: flex;
-flex-direction: column;
-align-items: center;
-text-align: center;
-.logo{
-  margin-bottom: 2rem;
-  height: 100px;
-}
-    h1{
-text-align: center;
-color:#331a00;
+  #header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    .logo {
+      margin-bottom: 2rem;
+      height: 100px;
+    }
+    h1 {
+      text-align: center;
+      color: #331a00;
     }
   }
-  label{
+  label {
     margin-top: 1rem;
     display: flex;
     align-items: center;
   }
-  input{
+  input {
     border: 1px solid black;
     padding: 1rem;
     border-radius: 5%;
     background: none;
     transition: all 0.5 ease;
-    margin: 0,2rem;
+    margin: 0, 2rem;
     font-size: 1.5rem;
   }
 }
 //animation slider
 /* The switch - the box around the slider */
-.ok{
+.ok {
   margin-left: 4.5rem;
-  text-align:center;
+  text-align: center;
 }
 .switch {
   position: relative;
@@ -140,8 +143,8 @@ color:#331a00;
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
@@ -152,8 +155,8 @@ color:#331a00;
   left: 4px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 input:checked + .slider {
@@ -171,7 +174,7 @@ input:checked + .slider:before {
 }
 
 /* Rounded sliders */
-.slider{
+.slider {
   border-radius: 34px;
 }
 
@@ -181,12 +184,14 @@ input:checked + .slider:before {
 
 //animation blobbutton
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-$openSans: 'Open Sans', Helvetica, Arial, sans-serif;
+$openSans: "Open Sans", Helvetica, Arial, sans-serif;
 body {
   background: #333;
   font-family: $openSans;
@@ -195,11 +200,11 @@ body {
 .buttons {
   margin-top: 50px;
   text-align: center;
-  border-radius:30px;
+  border-radius: 30px;
 }
 
 $cyan: #331a00;
-$dark: #FFFFFF;
+$dark: #ffffff;
 $borderW: 2px;
 
 .blob-btn {
@@ -218,8 +223,8 @@ $borderW: 2px;
   border: none;
   transition: color 0.5s;
   cursor: pointer;
-  border-radius:30px;
-  
+  border-radius: 30px;
+
   &:before {
     content: "";
     z-index: 1;
@@ -229,34 +234,34 @@ $borderW: 2px;
     width: 100%;
     height: 100%;
     border: $borderW solid $cyan;
-    border-radius:30px;
+    border-radius: 30px;
   }
-  
+
   &:after {
     content: "";
     z-index: -2;
     position: absolute;
-    left: $borderW*1.5;
-    top: $borderW*1.5;
+    left: $borderW * 1.5;
+    top: $borderW * 1.5;
     width: 100%;
     height: 100%;
 
     transition: all 0.3s 0.2s;
-    border-radius:30px;
+    border-radius: 30px;
   }
-  
+
   &:hover {
     color: $dark;
-    border-radius:30px;
-    
+    border-radius: 30px;
+
     &:after {
       transition: all 0.3s;
       left: 0;
       top: 0;
-      border-radius:30px;
+      border-radius: 30px;
     }
   }
-  
+
   &__inner {
     z-index: -1;
     overflow: hidden;
@@ -265,18 +270,18 @@ $borderW: 2px;
     top: 0;
     width: 100%;
     height: 100%;
-    border-radius:30px;
-    background:#ffffff;
+    border-radius: 30px;
+    background: #ffffff;
   }
-  
+
   // additional container created, because in FF blobs are breaking overflow:hidden of element with svg gooey filter
   &__blobs {
     position: relative;
     display: block;
     height: 100%;
-    filter: url('#goo');
+    filter: url("#goo");
   }
-  
+
   &__blob {
     position: absolute;
     top: $borderW;
@@ -284,29 +289,27 @@ $borderW: 2px;
     height: 100%;
     background: $cyan;
     border-radius: 100%;
-    transform: translate3d(0,150%,0) scale(1.7);
+    transform: translate3d(0, 150%, 0) scale(1.7);
     transition: transform 0.45s;
-    
-    @supports(filter: url('#goo')) {
-      transform: translate3d(0,150%,0) scale(1.4);
+
+    @supports (filter: url("#goo")) {
+      transform: translate3d(0, 150%, 0) scale(1.4);
     }
-    
+
     @for $i from 1 through $numOfBlobs {
       &:nth-child(#{$i}) {
         left: ($i - 1) * (120% / $numOfBlobs);
         transition-delay: ($i - 1) * 0.08s;
       }
     }
-    
+
     .blob-btn:hover & {
       transform: translateZ(0) scale(1.7);
-      
-      @supports(filter: url('#goo')) {
+
+      @supports (filter: url("#goo")) {
         transform: translateZ(0) scale(1.4);
       }
     }
   }
-  
 }
-
 </style>
